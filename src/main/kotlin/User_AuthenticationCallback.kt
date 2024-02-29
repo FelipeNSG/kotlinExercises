@@ -1,8 +1,8 @@
 
 fun main() {
 //Exercise 1: User Authentication Callback
-    /*fun authenticateUser(username: String, password: Int, callback: (Boolean) -> Unit) {
-        val defaultName = "Jorge"
+    fun authenticateUser(username: String, password: Int, callback: (Boolean) -> Unit) {
+        val defaultName = "Hello"
         val defaultPassword = 1234
 
 
@@ -19,11 +19,11 @@ fun main() {
         } else {
             println("Access failure ")
         }
-    }*/
+    }
 
 //Exercise 2: List Transformation with Lambdas
 
- /*   //Exercise 2: List Transformation with Lambdas
+    //Exercise 2: List Transformation with Lambdas
 fun transformList(listOfStrings: List<String>, listUppercase: (String) -> String): List<String> {
     val newListOfString: MutableList<String> = mutableListOf()
     for (element in listOfStrings) {
@@ -43,7 +43,7 @@ fun transformList2(listOfStrings: List<String>, listUppercase: (String) -> Strin
         str.plus("_")
 
     }
-    println(resulList)*/
+    println(resulList)
 }
 
 

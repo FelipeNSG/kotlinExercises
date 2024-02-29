@@ -113,7 +113,7 @@ fun enterRatingForTheMovie(): Float {
 fun movieRatingAddedToRatings() {
     var ratingAdd = enterRatingForTheMovie()
 
-    // while (ratingAdd in 1F..10F) {
+    // while (ratingAdd in 1F to 10F) {
     while (0 < ratingAdd && ratingAdd >= 10) {
         println("The value is incorrect, please enter one within the range of 1 to 10 (integers with decimals are accepted): ")
         ratingAdd = enterRatingForTheMovie()

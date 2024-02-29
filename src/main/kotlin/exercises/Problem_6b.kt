@@ -4,7 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlin.math.E
+
 
 sealed class Events {
     companion object {
@@ -13,17 +13,17 @@ sealed class Events {
         suspend fun generatedEvents() {
             for (i in 1..10) {
                 delay(500)
-                val theEvents = mutableListOf(Message(), Notification()).random()
+                val theEvents = mutableListOf(Message, Notification).random()
                 sharedFlow.emit(theEvents)
             }
         }
     }
 
-    class Message : Events() {
+    data object Message : Events() {
 
     }
 
-    class Notification : Events() {
+    data object Notification : Events() {
     }
 }
 
@@ -40,14 +40,16 @@ fun main() {
           Events.generatedEvents()
         }
 
+        launch {
         Events
             .sharedFlow
             .collect {
 
-            when (it) {
-                is Events.Message -> sharedFlowMessages.emit(it)
-                is Events.Notification -> sharedFlowNotification.emit(it)
+                when (it) {
+                    is Events.Message -> sharedFlowMessages.emit(it)
+                    is Events.Notification -> sharedFlowNotification.emit(it)
 
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ Problem Statement: Implement a UI state manager using StateFlow that emits state
 var stateInitial = MutableStateFlow(0) //message
 var stateUI: StateFlow<Int> = stateInitial
 
-fun events() {
+ fun events() {
     when (stateUI.value) {
         0 -> println("Data login")
         1 -> println("Data process")
@@ -28,13 +28,16 @@ fun main() {
             for (i in 1..3) {
                 delay(3000)
                 stateInitial.value = (1..3).random()
+                events()
             }
+            newScope.cancel()
         }
         // Collect values from stateUI
-      events()
+
+
       newScope.launch {
             stateUI.collect{
-                println("Collector 1 received: ")
+                print("Collector 1 received: ")
             }
         }
 
